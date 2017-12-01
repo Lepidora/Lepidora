@@ -1,0 +1,21 @@
+extends page
+
+block scripts
+  script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+  script(src='/scripts/emojitext.js')
+
+block content
+  div.content
+    h1 Generate an emoji column
+    div.column
+      input#outline(placeholder='Outline' value="😈")
+      input#fill(placeholder='Fill' value="😡")
+      input#border(placeholder='Border' value="😀")
+      //input#columns(type='number' value=2)
+      //Columns
+      input#discord(type='checkbox')
+      label(for='discord') Add line separations for Discord
+      input#text(placeholder='Text')
+      button#generate(onclick='generateText()') Generate
+      textarea#output(rows=20 cols=50)
+      

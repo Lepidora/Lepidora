@@ -1,0 +1,27 @@
+@import 'base';
+@import 'mixins';
+
+/*@import url('https://fonts.googleapis.com/css?family=Raleway');*/
+$primaryFont: 'Raleway', sans-serif;
+
+$primaryColour: #eeffcc;
+
+* {
+	font-family: $primaryFont;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@import 'header';
+@import 'content';
+@import 'footer';
+
+/*body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: $primaryColour;
+}*/
