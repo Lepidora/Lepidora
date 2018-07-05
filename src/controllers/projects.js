@@ -5,6 +5,22 @@
 //Dependencies
 const fs = require('fs');
 const marked = require('marked');
+const path = require('path');
+
+const highlight = require('highlight.js');
+
+const markdown = require('markdown-it')({
+	
+	highlight: (str, lang) => {
+		if (lang && highlight.getLanguage(lang)) {
+			try {
+				return highlight.highlight(lang, str).value;
+			} catch (e) {}
+		}
+		
+		return '';
+	}
+});
 
 //Module variables
 const projectpath = __dirname + '/../projects/';
@@ -14,7 +30,9 @@ const projects = {
 		normal: {}
 };
 
-(function loadProjects() {
+loadProjects();
+
+function loadProjects() {
 	
 	//Load all files in the projects path
 	var files = fs.readdirSync(projectpath);
@@ -22,31 +40,49 @@ const projects = {
 	//Iterate through the 'files' object and run 
 	files.forEach(function (filename) {
 		
-		//Validate and add the project file
-		addProjectFile(filename);
+		if(!fs.statSync(projectpath + filename).isDirectory()) {
+			
+			//Validate and add the project file
+			addProjectFile(filename);			
+		}
 	});
-})();
+}
+
+exports.reloadProjects = () => {
+	
+	projects.all = {};
+	projects.important = {};
+	projects.normal = {};
+	
+	loadProjects();
+	
+	console.log('Reloaded projects!');
+}
 
 function addProjectFile(filename) {
 	
+	var filelocation = path.join(projectpath, filename);
+	
 	//Load the data in the given file as JSON
-	var data = require(projectpath + filename);
+	var data = require(filelocation);
 	
 	//Only add the project if the contents is valid
 	if (validateProject(filename, data)) {
 		
 		//The 'content' field of the data file can be the name of a markdown file in the projects path
 		//If so, read the file and replace the 'content' field with the file's contents
-		var contentpath = data.content;
+		var contentfile = data.content;
+		
+		var contentlocation = path.join(projectpath, 'markdown', contentfile);
 		
 		//Check the markdown file exists
-		if (fs.existsSync(contentpath)) {
+		if (fs.existsSync(contentlocation)) {
 			
 			//Read the markdown from the given filepath;
-			var markdown = fs.readFileSync(contentpath, 'utf8');
+			var contents = fs.readFileSync(contentlocation, 'utf8');
 			
 			//Render the markdown into HTML
-			var render = marked(markdown);
+			var render = markdown.render(contents);
 			
 			//Replace the 'content' field in the project with the rendered markdown
 			data.content = render;
@@ -93,7 +129,7 @@ function validateProject(filename, project) {
 }
 
 exports.get = function(id) {
-	return projects[id];
+	return projects.all[id];
 }
 
 exports.getAll = function() {
