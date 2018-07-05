@@ -1,6 +1,6 @@
 @mixin full-width {
 	width: 100%;
-	background-color: #444;
+	background-color: #fff;
 }
 
 @mixin vertical-shadow($distance, $radius) {
@@ -42,19 +42,6 @@
 	&:hover::after {
 	   opacity: 1;
 	}
-	
-	
-	/*animation-name: 'hover-shadow';
-	animation-duration: 0.25s;
-	
-	@keyframes {
-	   from {
-	       
-	   }
-	   to {
-	       @include vertical-shadow(5px, 5px);
-	   }
-	}*/
 }
 
 @mixin transition($tr) {
