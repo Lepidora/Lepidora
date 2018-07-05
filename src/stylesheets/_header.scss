@@ -1,3 +1,57 @@
+$header-background-color: $primary-color !default;
+$header-gradient-background-color: $primary-gradient-color !default;
+
 .header {
 	@include full-width;
+	
+	@include gradient($header-background-color, $header-gradient-background-color);
+	
+	display: flex;
+	
+	justify-content: center;
+	align-items: center;
+	
+	height: 48px;
+	
+	h2 {
+        	color: #fff;
+	}
+	
+	a {
+	   color: #fff;
+	}
+}
+
+.header-content {
+	
+	display: flex;
+	
+	justify-content: space-between;
+	
+	width: 80%;
+}
+
+.header-left {
+	
+	display: flex;
+	
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.header-right {
+	
+	display: flex;
+	
+	justify-content: flex-end;
+	align-items: center;
+	
+	* {
+	   margin-left: 32px;
+	}
+}
+
+.header-image {
+	width: 32px;
+	height: 32px;
 }
