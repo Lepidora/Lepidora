@@ -1,14 +1,17 @@
-@import 'base';
+@import 'ceryx/ceryx.scss';
+
+/*@import 'base';*/
 @import 'mixins';
 
-/*@import url('https://fonts.googleapis.com/css?family=Raleway');*/
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 $primaryFont: 'Raleway', sans-serif;
 
 $primaryColour: #eeffcc;
 
-* {
+/** {
 	font-family: $primaryFont;
-}
+}*/
 
 body {
     display: flex;
@@ -19,9 +22,3 @@ body {
 @import 'header';
 @import 'content';
 @import 'footer';
-
-/*body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: $primaryColour;
-}*/
