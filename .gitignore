@@ -1,6 +1,11 @@
 # Custom Ignore
 
 upload.sh
+src/stylesheets/ceryx
+
+# macOS ignore
+
+.DS_Store
 
 # Node.js Ignore
 
