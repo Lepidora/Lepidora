@@ -2,7 +2,18 @@ extends layout
 
 block header
   div.header
-    h2 Page Header
+    div.header-content
+      div.header-left
+        a(href='/')
+          img(src='/images/logo-negative.png').header-image
+      div.header-right
+        a(href='/') projects
+        a(href='/about') about
+        a(href='/contact') contact
+        //a(href='https://github.com/lepidora')
+        img(src='/images/github-negative.png').header-image
+        
+    
     
 block footer
   div.footer
