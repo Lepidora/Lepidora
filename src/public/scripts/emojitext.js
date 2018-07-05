@@ -13,11 +13,11 @@ function generateText() {
 	var border = $('#border').val();
 	//alert(outline + fill + columns + input);
 	
-	discord = ($('#discord').is(":checked"));
+	discord = ($('#discord').is(':checked'));
 	
 	var outputarea = $('#output');
 	
-	var output = "";
+	var output = '';
 	
 	var columna = [];
 	var columnb = [];
@@ -25,11 +25,11 @@ function generateText() {
 	/*for (var i = 65; i <= 90; i++) {
 		var letter = String.fromCharCode(i);
 		
-		//output += getCharacter(letter) + "\n\n";
+		//output += getCharacter(letter) + '\n\n';
 	}*/
 	
 	if ((input.length % 2) !== 0) {
-		input += " ";
+		input += ' ';
 	}
 	
 	var inputarray = input.split('');
@@ -87,8 +87,8 @@ function generateText() {
 		var lettera = columna[li];
 		var letterb = columnb[li];
 		
-		var letterasplit = lettera.split("\n");
-		var letterbsplit = letterb.split("\n");
+		var letterasplit = lettera.split('\n');
+		var letterbsplit = letterb.split('\n');
 		
 		for (var letterline = 0; letterline < letterasplit.length; letterline++) {
 			
@@ -129,8 +129,11 @@ function generateText() {
 	
 	output += borderlines(totalwidth, borderwidth, border);
 	
-	output = output.replace(/O/g, outline);
-	output = output.replace(/X/g, fill);
+	output = output.replace(/O/g, '@');
+	output = output.replace(/X/g, '&');
+	
+	output = output.replace(/@/g, outline);
+	output = output.replace(/&/g, fill);
 	
 	outputarea.val(output);
 	
@@ -138,13 +141,13 @@ function generateText() {
 
 function addLine() {
 	
-	var output = "";
+	var output = '';
 	
-	output += "\n";
+	output += '\n';
 	linecount++;
 	
 	if (discord && linecount > 0 && (linecount % 15) === 0) {
-		output += "\n";
+		output += '\n';
 	}
 	
 	return output;
@@ -152,7 +155,7 @@ function addLine() {
 
 function borderlines(totalwidth, borderwidth, border) {
 	
-	var output = "";
+	var output = '';
 	
 	for (var height = 0; height < borderwidth; height++) {
 		for (var width = 0; width < totalwidth; width++) {
@@ -167,7 +170,7 @@ function borderlines(totalwidth, borderwidth, border) {
 
 function fillLine(totalwidth, borderwidth, fillwidth, border, outline) {
 	
-	var output = "";
+	var output = '';
 	
 	for (var fillline = 0; fillline < totalwidth; fillline++) {
 		
@@ -187,117 +190,133 @@ function fillLine(totalwidth, borderwidth, fillwidth, border, outline) {
 
 function getCharacter(char) {
 
-	if (char === "A") {
-		return "OXXO\nXOOX\nXXXX\nXOOX\nXOOX";
+	if (char === 'A') {
+		return 'OXXO\nXOOX\nXXXX\nXOOX\nXOOX';
 	}
 	
-	if (char === "B") {
-		return "XXO\nXOX\nXXO\nXOX\nXXO";
+	if (char === 'B') {
+		return 'XXO\nXOX\nXXO\nXOX\nXXO';
 	}
 	
-	if (char === "C") {
-		return "OXX\nXOO\nXOO\nXOO\nOXX";
+	if (char === 'C') {
+		return 'OXX\nXOO\nXOO\nXOO\nOXX';
 	}
 	
-	if (char === "D") {
-		return "XXXO\nXOOX\nXOOX\nXOOX\nXXXO";
+	if (char === 'D') {
+		return 'XXXO\nXOOX\nXOOX\nXOOX\nXXXO';
 	}
 	
-	if (char === "E") {
-		return "XXX\nXOO\nXXO\nXOO\nXXX";
+	if (char === 'E') {
+		return 'XXX\nXOO\nXXO\nXOO\nXXX';
 	}
 	
-	if (char === "F") {
-		return "XXX\nXOO\nXXO\nXOO\nXOO";
+	if (char === 'F') {
+		return 'XXX\nXOO\nXXO\nXOO\nXOO';
 	}
 	
-	if (char === "G") {
-		return "OXXO\nXOOO\nXOXX\nXOXO\nOXXO";
+	if (char === 'G') {
+		return 'OXXO\nXOOO\nXOXX\nXOXO\nOXXO';
 	}
 	
-	if (char === "H") {
-		return "XOOX\nXOOX\nXXXX\nXOOX\nXOOX";
+	if (char === 'H') {
+		return 'XOOX\nXOOX\nXXXX\nXOOX\nXOOX';
 	}
 	
-	if (char === "I") {
-		return "XXX\nOXO\nOXO\nOXO\nXXX";
+	if (char === 'I') {
+		return 'XXX\nOXO\nOXO\nOXO\nXXX';
 	}
 	
-	if (char === "J") {
-		return "XXXX\nOOXO\nOOXO\nXOXO\nOXXO";
+	if (char === 'J') {
+		return 'XXXX\nOOXO\nOOXO\nXOXO\nOXXO';
 	}
 	
-	if (char === "K") {
+	if (char === 'K') {
 		//unfinished
-		return "XOX\nXOX\nXXO\nXOX\nXOX";
+		return 'XOX\nXOX\nXXO\nXOX\nXOX';
 	}
 	
-	if (char === "L") {
-		return "XOO\nXOO\nXOO\nXOO\nXXX";
+	if (char === 'L') {
+		return 'XOO\nXOO\nXOO\nXOO\nXXX';
 	}
 	
-	if (char === "M") {
+	if (char === 'M') {
 		//unfinished
-		return "XOOX\nXXXX\nXOOX\nXOOX\nXOOX";
+		return 'XOOX\nXXXX\nXOOX\nXOOX\nXOOX';
 	}
 	
-	if (char === "N") {
-		return "XOOX\nXXOX\nXOXX\nXOOX\nXOOX";
+	if (char === 'N') {
+		return 'XOOX\nXXOX\nXOXX\nXOOX\nXOOX';
 	}
 	
-	if (char === "O") {
-		return "OXXO\nXOOX\nXOOX\nXOOX\nOXXO";
+	if (char === 'O') {
+		return 'OXXO\nXOOX\nXOOX\nXOOX\nOXXO';
 	}
 	
-	if (char === "P") {
-		return "XXXO\nXOOX\nXXXO\nXOOO\nXOOO";
+	if (char === 'P') {
+		return 'XXXO\nXOOX\nXXXO\nXOOO\nXOOO';
 	}
 	
-	if (char === "Q") {
-		return "OXXO\nXOOX\nXOOX\nXOXO\nOXOX";
+	if (char === 'Q') {
+		return 'OXXO\nXOOX\nXOOX\nXOXO\nOXOX';
 	}
 	
-	if (char === "R") {
-		return "XXO\nXOX\nXXO\nXOX\nXOX";
+	if (char === 'R') {
+		return 'XXO\nXOX\nXXO\nXOX\nXOX';
 	}
 	
-	if (char === "S") {
+	if (char === 'S') {
 		//unfinished
-		return "OXXX\nXOOO\nOXXO\nOOOX\nXXXO";
+		return 'OXXX\nXOOO\nOXXO\nOOOX\nXXXO';
 	}
 	
-	if (char === "T") {
-		return "XXX\nOXO\nOXO\nOXO\nOXO";
+	if (char === 'T') {
+		return 'XXX\nOXO\nOXO\nOXO\nOXO';
 	}
 	
-	if (char === "U") {
-		return "XOOX\nXOOX\nXOOX\nXOOX\nOXXO";
+	if (char === 'U') {
+		return 'XOOX\nXOOX\nXOOX\nXOOX\nOXXO';
 	}
 	
-	if (char === "V") {
-		return "XOOX\nXOOX\nXOOX\nOXXO\nOXXO";
+	if (char === 'V') {
+		return 'XOOX\nXOOX\nXOOX\nOXXO\nOXXO';
 	}
 	
-	if (char === "W") {
+	if (char === 'W') {
 		//unfinished
-		return "XOOX\nXOOX\nXOOX\nXXXX\nOXXO";
+		return 'XOOX\nXOOX\nXOOX\nXXXX\nOXXO';
 	}
 	
-	if (char === "X") {
-		return "XOOX\nOXXO\nOXXO\nXOOX\nXOOX";
+	if (char === 'X') {
+		return 'XOOX\nOXXO\nOXXO\nXOOX\nXOOX';
 	}
 	
-	if (char === "Y") {
+	if (char === 'Y') {
 		//unfinished
-		return "XOX\nXOX\nOXO\nOXO\nOXO";
+		return 'XOX\nXOX\nOXO\nOXO\nOXO';
 	} 
 	
-	if (char === "Z") {
-		return "XXXX\nOOOX\nOOXO\nOXOO\nXXXX";
+	if (char === 'Z') {
+		return 'XXXX\nOOOX\nOOXO\nOXOO\nXXXX';
 	}
 	
-	if (char === " ") {
-		return "OOOO\nOOOO\nOOOO\nOOOO\nOOOO";
+	if (char === ' ') {
+		return 'OOOO\nOOOO\nOOOO\nOOOO\nOOOO';
+	}
+	
+	if (char === '[') {
+		return 'XOOO\nXOOO\nXOOO\nXOOO\nXOOO';
+	}
+	
+	if (char === ']') {
+		return 'XOOO\nXOOX\nXOOX\nXOOX\nXOOX';
+	}
+	
+	if (char === '{') {
+		return 'XOOX\nXOOX\nXOOX\nXOOX\nXOOX';
+	}
+	
+	if (char === '}') {
+		return 'XOOO\nXOOO\nXOOO\nXOXX\nXOOO';
 	}
 	
 }
