@@ -1,0 +1,23 @@
+extends page
+
+block content
+  div.content.column.project
+    h1= project.name 
+    p!= project.content
+    
+block meta
+  meta(name='twitter:card' content='summary')
+  meta(name='twitter:creator' content='@Lepidora_')
+  meta(name='twitter:site' content='@Lepidora_')
+  meta(name='twitter:title' content=project.name)
+  meta(name='twitter:description' content=project.description)
+  meta(name='twitter:image' content='#{siteAddress}' + project.image)
+  meta(name='twitter:url' content='#{siteAddress}')
+
+  // OpenGraph
+  meta(property='og:title' content=project.name)
+  meta(property='og:type' content='website')
+  meta(property='og:url' content='#{siteAddress}')
+  meta(property='og:image' content='#{siteAddress}' + project.image)
+  meta(property='og:description' content=project.description)
+  //meta(property='og:email' content='')
