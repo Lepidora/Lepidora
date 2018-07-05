@@ -2,6 +2,7 @@
 
 upload.sh
 src/stylesheets/ceryx
+src/public/stylesheets/
 
 # macOS ignore
 
