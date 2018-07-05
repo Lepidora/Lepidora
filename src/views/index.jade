@@ -2,9 +2,12 @@ extends page
 
 block content
   div.content
-    h2 Projects
+    br
     div.cards
       for project in projects
-        div.card
-          h3= project.name
-          p= project.description
+        a(href='/project/' + project.id)
+          div.card
+            h3= project.name
+            p= project.description
+            if project.image
+              img.card-image(src=project.image)
