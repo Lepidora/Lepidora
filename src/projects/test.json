@@ -1,0 +1,6 @@
+{
+	"id": "test",
+	"name": "Test Project",
+	"description": "This is a test project to make sure projects work",
+	"content": "test.md"
+}

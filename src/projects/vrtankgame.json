@@ -1,0 +1,6 @@
+{
+	"id": "vr-tank-game",
+	"name": "VR Tank Game",
+	"description": "A VR Android game written in Unity",
+	"content": "vrtankgame.md"
+}

@@ -1,0 +1,7 @@
+{
+	"id": "train",
+	"name": "T.R.A.I.N",
+	"description": "An iOS app for displaying live train times at stations near the user",
+	"content": "train.md",
+	"image": "/images/train.png"
+}

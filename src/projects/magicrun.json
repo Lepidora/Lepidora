@@ -1,0 +1,7 @@
+{
+	"id": "magicrun",
+	"name": "Magic Run",
+	"description": "A simple game written in C++ using SDL",
+	"content": "magicrun.md",
+	"image": "/images/magicrun.png"
+}

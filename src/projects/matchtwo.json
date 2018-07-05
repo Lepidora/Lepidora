@@ -1,0 +1,6 @@
+{
+	"id": "match-two",
+	"name": "Match Two",
+	"description": "A simple two player match two game written in Java",
+	"content": "matchtwo.md"
+}

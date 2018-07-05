@@ -1,0 +1,7 @@
+{
+	"id": "tank-scores",
+	"name": "VR Tank Game Scores",
+	"description": "A simple Node.js site for displaying VR Tank Game scores",
+	"content": "tankscores.md",
+	"image": "/images/tankscores.png"
+}

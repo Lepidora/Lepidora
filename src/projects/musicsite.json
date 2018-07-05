@@ -1,0 +1,7 @@
+{
+	"id": "music-site",
+	"name": "Music Site",
+	"description": "A music database management site written in PHP",
+	"content": "musicsite.md",
+	"image": "/images/musicsite.png"
+}
