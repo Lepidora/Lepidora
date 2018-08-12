@@ -23,7 +23,8 @@ const markdown = require('markdown-it')({
 });
 
 //Module variables
-const projectpath = __dirname + '/../projects/';
+const projectpath = path.join(__dirname, '..', 'projects');
+const jsonpath = path.join(projectpath, 'json');
 const projects = {
 		all: {},
 		important: {},
@@ -35,17 +36,34 @@ loadProjects();
 function loadProjects() {
 	
 	//Load all files in the projects path
-	var files = fs.readdirSync(projectpath);
+	var files = fs.readdirSync(jsonpath);
 	
 	//Iterate through the 'files' object and run 
 	files.forEach(function (filename) {
 		
-		if(!fs.statSync(projectpath + filename).isDirectory()) {
+		if(!fs.statSync(path.join(jsonpath, filename)).isDirectory()) {
 			
 			//Validate and add the project file
 			addProjectFile(filename);			
 		}
 	});
+	
+	var importantpath = path.join(projectpath, 'important.json');
+	
+	if (fs.existsSync(importantpath)) {
+		
+		var important = require(importantpath);
+		
+		//Add any projects in the important files to the 'important' array
+		important.forEach(function (id) {
+			
+			var project = projects.all[id];
+			
+			if (project !== undefined) {
+				projects.important[id] = project;
+			}
+		});
+	}
 }
 
 exports.reloadProjects = () => {
@@ -61,7 +79,7 @@ exports.reloadProjects = () => {
 
 function addProjectFile(filename) {
 	
-	var filelocation = path.join(projectpath, filename);
+	var filelocation = path.join(jsonpath, filename);
 	
 	//Load the data in the given file as JSON
 	var data = require(filelocation);
@@ -92,11 +110,11 @@ function addProjectFile(filename) {
 		projects.all[data.id] = data;
 		
 		//If the project is marked as important, add it to the important projects list
-		if (data.important) {
+		/*if (data.important) {
 			projects.important[data.id] = data;
 		} else {
 			projects.normal[data.id] = data;
-		}
+		}*/
 		
 	} else {
 		//Notify the console if the project was invalid
