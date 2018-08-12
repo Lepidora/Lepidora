@@ -1,8 +1,23 @@
+$footer-height: 116px;
+
+.container {
+	
+	/*display: flex;
+	flex-direction: column;
+	align-items: center;*/
+	
+	position: relative;
+
+	min-height: 100%;
+}
+
 .content {
 	position: relative;
 	width: 80%;
 	
-	padding-bottom: 8px;
+	min-height: 100%;
+	
+	padding-bottom: 8px + $footer-height;
 }
 
 .card-image {
@@ -23,9 +38,44 @@
     padding-top: 6px;
     padding-bottom: 0 !important;
     
-    object-fit: cover;    
+    object-fit: cover;
     
     opacity: 0.9;
+}
+
+.card-mini-image {
+	
+	@extend .card-image;
+	
+	max-height: $card-mini-size;
+	
+	object-fit: contain;
+	
+	align-self: center;
+	
+	padding-top: 0;
+	
+	opacity: 1;
+	
+	position:absolute;
+	
+    top:0;
+    bottom:0;
+    
+    margin:auto;
+}
+
+.card-mini {
+	
+	margin-left: 4px;
+	margin-right: 4px;
+	
+}
+
+.skill-container {
+	
+	
+	
 }
 
 .column {
@@ -34,6 +84,10 @@
 	
 	flex-direction: column;
 	align-items: center;
+	
+	position: relative;
+	
+	height: 100%;
 }
 
 .project {
@@ -72,4 +126,15 @@
 	    font-style: italic;
 	    font-size: $h4-font-size;
 	}
+}
+
+.bottom {
+	
+	position: absolute;
+	
+	bottom: 0;
+    
+    height: $footer-height;
+    
+    @include full-width;
 }

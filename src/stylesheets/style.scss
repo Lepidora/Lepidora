@@ -13,10 +13,12 @@ $primaryColour: #eeffcc;
 	font-family: $primaryFont;
 }*/
 
+html {
+	height: 100%;
+}
+
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 100%;
 }
 
 @import 'header';

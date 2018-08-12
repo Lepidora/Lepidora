@@ -1,13 +1,22 @@
 extends page
 
 block content
-  div.content
-    br
-    div.cards
-      for project in projects
-        a(href='/project/' + project.id)
-          div.card
-            h3= project.name
-            p= project.description
-            if project.image
-              img.card-image(src=project.image)
+    div.column
+      div.content
+        br
+        h1 Projects
+        div.cards
+          for project in projects
+            a(href='/project/' + project.id)
+              div.card
+                h3= project.name
+                p= project.description
+                if project.image
+                  img.card-image(src=project.image)
+        br
+        h1 Skills
+        div.cards
+          for skill in skills
+            div.card-mini(style='background-color: #' + skill.colour)
+              if skill.image
+                img.card-mini-image(src=skill.image)
