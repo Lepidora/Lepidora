@@ -1,0 +1,98 @@
+[
+	{
+		"name": "Java",
+		"skill": 3,
+		"colour": "5382a1",
+		"image": "java.png"
+	},
+	{
+		"name": "Objective-C",
+		"skill": 3,
+		"colour": "191918",
+		"image": "obj-c.png"
+	},
+	{
+		"name": "C++",
+		"skill": 2,
+		"colour": "00599c",
+		"image": "c++.png"
+	},
+	{
+		"name": "C",
+		"skill": 2,
+		"colour": "a9b9cb",
+		"image": "c.png"
+	},
+	{
+		"name": "JavaScript",
+		"skill": 3,
+		"colour": "fff",
+		"image": "js.png"
+	},
+	{
+		"name": "Node.js",
+		"skill": 3,
+		"colour": "539e43",
+		"image": "nodejs.png"
+	},
+	{
+		"name": "iOS",
+		"skill": 3,
+		"colour": "000",
+		"image": "ios.png"
+	},
+	{
+		"name": "Android",
+		"skill": 2,
+		"colour": "7fcd33",
+		"image": "android.png"
+	},
+	{
+		"name": "OpenGL",
+		"skill": 1,
+		"colour": "5586a4",
+		"image": "opengl.png"
+	},
+	{
+		"name": "HTML5",
+		"skill": 3,
+		"colour": "fff",
+		"image": "html5.png"
+	},
+	{
+		"name": "Jade",
+		"skill": 2,
+		"colour": "c1272d",
+		"image": "jade.png"
+	},
+	{
+		"name": "Sass",
+		"skill": 2,
+		"colour": "cd6799",
+		"image": "sass.png"
+	},
+	{
+		"name": "jQuery",
+		"skill": 2,
+		"colour": "0868ab",
+		"image": "jquery.png"
+	},
+	{
+		"name": "PHP",
+		"skill": 2,
+		"colour": "8993be",
+		"image": "php.png"
+	},
+	{
+		"name": "Haskell",
+		"skill": 1,
+		"colour": "54a0c1",
+		"image": "haskell.png"
+	},
+	{
+		"name": "Python",
+		"skill": 1,
+		"colour": "ffde50",
+		"image": "python.png"
+	}
+]
