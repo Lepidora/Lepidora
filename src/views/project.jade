@@ -1,9 +1,10 @@
 extends page
 
 block content
-  div.content.column.project
-    h1= project.name 
-    p!= project.content
+  div.column
+    div.content.project
+      h1= project.name 
+      p!= project.content
     
 block meta
   meta(name='twitter:card' content='summary')
