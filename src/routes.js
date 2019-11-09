@@ -15,6 +15,9 @@ module.exports = function(app) {
 	app.get('/emojitext', toys.emojitext);
 	app.get('/project/:project', renderProject());
 	app.get('/reloadprojects', projects.reloadProjects);
+
+	app.get('/admin', pages.admin);
+	app.post('/admin', pages.adminPost);
 	
 	//app.get('/download', pages.download);
 	//app.get('/upload', pages.upload);

@@ -1,0 +1,28 @@
+extends page
+
+block scripts
+    script(src='/scripts/common.js')
+    script(src='/scripts/admin.js')
+
+block content
+    div.column
+      div.content
+        br
+        h1 Admin
+        div
+          
+        h2 New Project
+        div.column
+            input(type=text, name='id', id='id', placeholder='ID')
+            input(type=text, name='name', id='name', placeholder='Name')
+            input(type=text, name='description', id='description', placeholder='Description')
+            input(type=text, name='tags', id='tags', placeholder='Tags (comma sep)')
+            label(for='important') Important
+            input(type='checkbox', name='important', id='important')
+            textarea(name='content', id='content', placeholder='Page Markdown')
+            button(onclick='renderPreview()') Preview
+            button(onclick='submitProject()') Submit
+            
+        h2 Preview    
+        div.column
+          div.content.project(id='preview')

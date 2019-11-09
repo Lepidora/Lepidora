@@ -25,6 +25,7 @@ const markdown = require('markdown-it')({
 //Module variables
 const projectpath = path.join(__dirname, '..', 'projects');
 const jsonpath = path.join(projectpath, 'json');
+const markdownpath = path.join(projectpath, 'markdown');
 const projects = {
 		all: {},
 		important: {},
@@ -36,7 +37,7 @@ loadProjects();
 function loadProjects() {
 	
 	//Load all files in the projects path
-	var files = fs.readdirSync(jsonpath);
+	let files = fs.readdirSync(jsonpath);
 	
 	//Iterate through the 'files' object and run 
 	files.forEach(function (filename) {
@@ -44,7 +45,7 @@ function loadProjects() {
 		if(!fs.statSync(path.join(jsonpath, filename)).isDirectory()) {
 			
 			//Validate and add the project file
-			addProjectFile(filename);			
+			readProjectFile(filename);			
 		}
 	});
 	
@@ -52,12 +53,12 @@ function loadProjects() {
 	
 	if (fs.existsSync(importantpath)) {
 		
-		var important = require(importantpath);
+		let important = require(importantpath);
 		
 		//Add any projects in the important files to the 'important' array
 		important.forEach(function (id) {
 			
-			var project = projects.all[id];
+			let project = projects.all[id];
 			
 			if (project !== undefined) {
 				projects.important[id] = project;
@@ -66,41 +67,51 @@ function loadProjects() {
 	}
 }
 
+function clearObject(object) {
+    for (const property of Object.keys(object)) {
+        delete object[property];
+    }
+}
+
 exports.reloadProjects = () => {
 	
-	projects.all = {};
+	/*projects.all = {};
 	projects.important = {};
-	projects.normal = {};
+	projects.normal = {};*/
+    
+    clearObject(projects.all);
+    clearObject(projects.important);
+    clearObject(projects.normal);
 	
 	loadProjects();
 	
 	console.log('Reloaded projects!');
 }
 
-function addProjectFile(filename) {
+function readProjectFile(filename) {
 	
 	var filelocation = path.join(jsonpath, filename);
 	
 	//Load the data in the given file as JSON
-	var data = require(filelocation);
+	let data = require(filelocation);
 	
 	//Only add the project if the contents is valid
 	if (validateProject(filename, data)) {
 		
 		//The 'content' field of the data file can be the name of a markdown file in the projects path
 		//If so, read the file and replace the 'content' field with the file's contents
-		var contentfile = data.content;
+		let contentfile = data.content;
 		
-		var contentlocation = path.join(projectpath, 'markdown', contentfile);
+		let contentlocation = path.join(markdownpath, contentfile);
 		
 		//Check the markdown file exists
 		if (fs.existsSync(contentlocation)) {
 			
 			//Read the markdown from the given filepath;
-			var contents = fs.readFileSync(contentlocation, 'utf8');
+			let contents = fs.readFileSync(contentlocation, 'utf8');
 			
 			//Render the markdown into HTML
-			var render = markdown.render(contents);
+			let render = renderMarkdown(contents);
 			
 			//Replace the 'content' field in the project with the rendered markdown
 			data.content = render;
@@ -122,18 +133,26 @@ function addProjectFile(filename) {
 	}
 }
 
+function addMarkdownFile(id, content) {
+    
+    let filelocation = path.join(markdownpath, id + '.md');
+    
+    //let data = 
+    
+}
+
 function validateProject(filename, project) {
 	
 	//The list of fields to check for
 	const fields = ['id', 'name', 'description', 'content'];
 	
-	var valid = true;
+	let valid = true;
 	
 	//Iterate through every field
-	for (var index = 0; index < fields.length; index++) {
+	for (let index = 0; index < fields.length; index++) {
 
 		//Get the current field
-		var field = fields[index];
+		let field = fields[index];
 		
 		//If 'contents' doesn't have a given field, notify the console and change the 'valid' flag
 		if (!project[field]) {
@@ -145,6 +164,46 @@ function validateProject(filename, project) {
 	//If all fields are present, this will return true, otherwise it will return false
 	return valid;
 }
+
+exports.addNewProject = (id, name, description, tags, content) => {
+    
+    let errors = [];
+    let warnings = [];
+    
+    if (!id || id === '') {
+        errors.push('id');
+    }
+    
+    if (!name || name === '') {
+        errors.push('name');
+    }
+    
+    if (!description || description === '') {
+        errors.push('description');
+    }
+    
+    if (!markdown || markdown === '') {
+        errors.push('markdown');
+    } 
+    
+    if (!tags || tags.length === 0) {
+        warnings.push('tags');
+    }
+    
+    if (errors.length > 0 || warnings.length > 0) {
+        return { errors: errors, warnings: warnings };
+    }
+    
+    
+    
+};
+
+//Putting this into function lets us also use it externally
+function renderMarkdown(content) {
+    return markdown.render(content);
+}
+
+exports.renderMarkdown = renderMarkdown;
 
 exports.get = function(id) {
 	return projects.all[id];
