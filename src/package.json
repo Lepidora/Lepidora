@@ -10,7 +10,7 @@
     "express": "3.11.0",
     "highlight.js": "^9.12.0",
     "jade": "*",
-    "markdown-it": "^8.4.1",
+    "markdown-it": "^12.3.2",
     "marked": "^0.3.18",
     "mocha": "^3.5.0",
     "node-sass-middleware": "^0.11.0",
